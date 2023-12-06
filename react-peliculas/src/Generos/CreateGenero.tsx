@@ -21,7 +21,7 @@ export default function CreateGenero() {
                     <label htmlFor="nombre">Nombre</label>
                     <Field name="nombre" id="nombre" className="form-control"></Field>
                 </div>
-                <Button type="submit">Salvar</Button>
+                <Button type="submit">Salvar boton</Button>
                 <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
             </Form>
             </Formik>
