@@ -1,9 +1,11 @@
-import { Link, useHistory } from "react-router-dom"
-import Button from "../peliculas/utils/Button"
-import { Formik, Form, Field } from "formik";
+import { Link/*, useHistory*/ } from "react-router-dom"
+import Button from "../utils/Button"
+import { Formik, Form } from "formik";
+import * as Yup from 'yup'
+import FormGroupText from "../utils/FormGroupText";
 
 export default function CreateGenero() {
-    const history = useHistory();
+    //const history = useHistory();
     return (
         <>
             <h3>Crear Genero</h3>
@@ -15,15 +17,16 @@ export default function CreateGenero() {
                 onSubmit={values => {
                     console.log(values);
                 }}
+
+                validationSchema={Yup.object({
+                    nombre: Yup.string().required('Este campo es requerido').primeraLetraMayuscula()
+                })}
             >
-            <Form>
-                <div className="form-group">
-                    <label htmlFor="nombre">Nombre</label>
-                    <Field name="nombre" id="nombre" className="form-control"></Field>
-                </div>
-                <Button type="submit">Salvar boton</Button>
-                <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
-            </Form>
+                <Form>
+                    <FormGroupText campo="nombre" label="Nombre" placeholder="Nombre gènero" />
+                    <Button type="submit">Salvar</Button>
+                    <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
+                </Form>
             </Formik>
 
         </>

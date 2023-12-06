@@ -2,35 +2,35 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import rutas from './RouteConfig';
-import Menu from './peliculas/utils/Menu';
+import Menu from './utils/Menu';
+import configurarValidaciones from './Validation'
+
+configurarValidaciones();
 
 function App() {
 
   return (
     <>
-
-<BrowserRouter>
-      <Menu />
-      <div className='container'>
-
+      <BrowserRouter>
+        <Menu />
+        <div className='container'>
           <Switch>
-            {rutas.map( ruta => <Route key={ruta.path} path={ruta.path}
-             exact={ruta.exact}>
+            {rutas.map(ruta => <Route key={ruta.path} path={ruta.path}
+              exact={ruta.exact}>
               <ruta.componente></ruta.componente>
-             </Route>
-             )}
+            </Route>
+            )}
           </Switch>
-   
-      </div>
+
+        </div>
       </BrowserRouter>
     </>
 
   )
-
 }
 
 export default App;
-function Useeffect(arg0: () => () => void) {
-  throw new Error('Function not implemented.');
-}
+// function Useeffect(arg0: () => () => void) {
+  // throw new Error('Function not implemented.');
+// }
 
